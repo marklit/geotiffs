@@ -44,7 +44,8 @@ $ python -m pip install -r ~/geotiffs/requirements.txt
 
 ```bash
 $ wget https://umbra-open-data-catalog.s3.amazonaws.com/sar-data/tasks/Suvarnabhumi%20International%20Airport,%20Thailand/79a1d617-8ca7-460a-9327-7f5e3b2f2ba4/2024-05-19-02-50-10_UMBRA-05/2024-05-19-02-50-10_UMBRA-05_GEC.tif
-$ python main.py stacks 2024-05-19-02-50-10_UMBRA-05_GEC.tif
+
+$ python main.py stack 2024-05-19-02-50-10_UMBRA-05_GEC.tif
 ```
 
 ```json

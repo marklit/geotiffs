@@ -49,7 +49,7 @@ def parse_tiff(lines:list):
 
 
 @app.command()
-def stacks(filename:str):
+def stack(filename:str):
     lines = execute('tiffinfo -i %s' % quote(filename))\
                        .stdout\
                        .strip()\
