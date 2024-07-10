@@ -28,7 +28,7 @@ def parse_tiff(lines:list):
         elif line.startswith('TIFF Directory'):
             stack_id = stack_id + 1
         elif line.startswith('  ') and line.count(':') == 1:
-            if stack_id not in stack.keys():
+            if stack_id not in stack:
                 stack[stack_id] = {'stack_num': stack_id}
 
             x, y = line.strip().split(':')
@@ -40,7 +40,7 @@ def parse_tiff(lines:list):
         elif line.startswith('  ') and \
              line.count(':') == 2 and \
              'Image Width' in line:
-            if stack_id not in stack.keys():
+            if stack_id not in stack:
                 stack[stack_id] = {'stack_num': stack_id}
 
             _, width, _, _, _ = re.split(r'\: ([0-9]*)', line)
