@@ -30,8 +30,7 @@ $ brew install \
     gdal \
     git \
     jq \
-    libimage-exiftool-perl \
-    libtiff-tools \
+    libtiff \
     virtualenv
 
 $ virtualenv ~/.geotiffs
