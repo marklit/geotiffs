@@ -11,7 +11,6 @@ import json
 import re
 from   shlex         import quote
 
-from   rich.progress import Progress, track
 from   shpyx         import run as execute
 import typer
 
