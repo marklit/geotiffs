@@ -19,7 +19,7 @@ app = typer.Typer(rich_markup_mode='rich')
 
 
 def parse_tiff(lines:list):
-    stack, stack_id = {}, None
+    out, stack_id = {}, None
 
     for line in lines:
         if not stack_id:
@@ -28,24 +28,24 @@ def parse_tiff(lines:list):
             stack_id = stack_id + 1
         elif line.startswith('  ') and line.count(':') == 1:
             if stack_id not in stack:
-                stack[stack_id] = {'stack_num': stack_id}
+                out[stack_id] = {'stack_num': stack_id}
 
             x, y = line.strip().split(':')
 
             if len(x) > 1 and not x.startswith('Tag ') and \
                y and \
                len(str(y).strip()) > 1:
-                stack[stack_id][x.strip()] = y.strip()
+                out[stack_id][x.strip()] = y.strip()
         elif line.startswith('  ') and \
              line.count(':') == 2 and \
              'Image Width' in line:
             if stack_id not in stack:
-                stack[stack_id] = {'stack_num': stack_id}
+                out[stack_id] = {'stack_num': stack_id}
 
             _, width, _, _, _ = re.split(r'\: ([0-9]*)', line)
-            stack[stack_id]['width'] = int(width.strip())
+            out[stack_id]['width'] = int(width.strip())
 
-    return [y for x, y in stack.items()]
+    return [y for x, y in out.items()]
 
 
 @app.command()
